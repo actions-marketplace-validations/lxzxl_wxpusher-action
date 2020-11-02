@@ -13,6 +13,7 @@ const inputs = [
 ];
 
 const options = inputs.reduce((res, k) => (res[k] = core.getInput(k)), {});
+console.log(options);
 
 async function run() {
   if (!options.appToken) {
