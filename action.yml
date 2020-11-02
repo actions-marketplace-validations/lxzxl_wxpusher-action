@@ -1,0 +1,35 @@
+name: "WxPusher"
+description: "Send message via WxPusher"
+inputs:
+  appToken:
+    description: "WxPusher App Token"
+    required: true
+  content:
+    description: "消息详细内容"
+    required: true
+  summary:
+    description: "消息摘要，显示在微信聊天页面或者模版消息卡片上，限制长度100，可以不传，不传默认截取content前面的内容。"
+    required: false
+  contentType:
+    description: "内容类型 1表示文字  2表示html(只发送body标签内部的数据即可，不包括body标签) 3表示markdown"
+    required: false
+    default: "1"
+  topicIds:
+    description: "发送目标的topicId，多个用`,`分隔！，也就是群发，使用uids单发的时候，可以不传。"
+    required: false
+  uids:
+    description: "发送目标的UID，多个用`,`分隔！注意uids和topicIds可以同时填写，也可以只填写一个"
+    required: false
+  url:
+    description: "原文链接，可选参数"
+    required: false
+  wxPusherUrl:
+    description: "WxPusher App Token"
+    required: false
+    default: "http://wxpusher.zjiecode.com/api/send/message/"
+outputs:
+  time: # id of output
+    description: "The time we greeted you"
+runs:
+  using: "node12"
+  main: "index.js"

@@ -1,0 +1,19 @@
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12"
+      - name: WxPusher Action
+        id: wxpusher
+        uses: actions/hello-world-javascript-action@v1.1
+        with:
+          appToken: "Mona the Octocat"
+      # Use the output from the `hello` step
+      - name: Get the output response
+        run: echo "Response - ${{ steps.wxpusher.outputs.response }}"
