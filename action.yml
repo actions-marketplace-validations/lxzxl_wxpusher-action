@@ -1,4 +1,4 @@
-name: "WxPusher"
+name: "WxPusher Message"
 description: "Send message via WxPusher"
 inputs:
   appToken:
