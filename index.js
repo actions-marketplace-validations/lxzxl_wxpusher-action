@@ -12,7 +12,7 @@ const inputs = [
   "wxPusherUrl",
 ];
 
-const options = inputs.map((k) => core.getInput(k));
+const options = inputs.reduce((res, k) => (res[k] = core.getInput(k)), {});
 
 async function run() {
   if (!options.appToken) {
