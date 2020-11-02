@@ -40,8 +40,7 @@ async function run() {
       contentType,
       url,
     });
-    const body = await res.readBody();
-    core.setOutput("response", body);
+    core.setOutput("response", res.result);
     //=> 'https://cats.com/unicorn'
   } catch (error) {
     core.setFailed(error.message);
