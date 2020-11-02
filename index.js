@@ -1,10 +1,6 @@
 const core = require("@actions/core");
 const got = require("got");
 
-const options = {
-  appToken: core.getInput("appToken"),
-};
-
 const inputs = [
   "appToken",
   "content",
