@@ -5,7 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Test WxPusher action
     steps:
-      - uses: actions/checkout@v2
       - name: WxPusher Action
         uses: lxzxl/wxpusher-action@1.0
         id: wxpusher
