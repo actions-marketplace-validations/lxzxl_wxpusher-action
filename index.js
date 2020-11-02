@@ -30,23 +30,16 @@ async function run() {
   const topicIds = options.topicIds.split(/[,，]/);
   const uids = options.uids.split(/[,，]/);
   try {
-    const httpClient = new HttpClient("Github Action", {
-      headers: {
-        "Content-Type": "application/json",
-      },
+    const httpClient = new HttpClient("Github Action");
+    const res = await httpClient.postJson(wxPusherUrl, {
+      appToken,
+      summary: encodeURIComponent(summary),
+      content,
+      topicIds,
+      uids,
+      contentType,
+      url,
     });
-    const res = await httpClient.post(
-      wxPusherUrl,
-      JSON.stringify({
-        appToken,
-        summary: encodeURIComponent(summary),
-        content,
-        topicIds,
-        uids,
-        contentType,
-        url,
-      })
-    );
     const body = await res.readBody();
     core.setOutput("response", body);
     //=> 'https://cats.com/unicorn'
