@@ -1,5 +1,5 @@
 const core = require("@actions/core");
-const got = require("got");
+const HttpClient = require("@actions/http-client");
 
 const inputs = [
   "appToken",
@@ -27,8 +27,14 @@ async function run() {
   const topicIds = options.topicIds.split(/[,，]/);
   const uids = options.uids.split(/[,，]/);
   try {
-    const res = await got.post(wxPusherUrl, {
-      json: {
+    const httpClient = new HttpClient("Github Action", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const res = await httpClient.post(
+      wxPusherUrl,
+      JSON.stringify({
         appToken,
         summary: encodeURIComponent(summary),
         content,
@@ -36,9 +42,10 @@ async function run() {
         uids,
         contentType,
         url,
-      },
-    });
-    core.setOutput("response", res);
+      })
+    );
+    const body = await res.readBody();
+    core.setOutput("response", body);
     //=> 'https://cats.com/unicorn'
   } catch (error) {
     core.setFailed(error.message);
