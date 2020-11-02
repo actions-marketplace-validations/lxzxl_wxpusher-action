@@ -13,8 +13,11 @@ const inputs = [
 ];
 
 async function run() {
-  const options = inputs.reduce((res, k) => (res[k] = core.getInput(k)), {});
-  console.debug("options:", options);
+  const options = inputs.reduce((res, k) => {
+    res[k] = core.getInput(k);
+    return res;
+  }, {});
+  console.debug("options:", JSON.stringify(options));
   if (!options.appToken) {
     core.setFailed("缺少 appToken");
     return;
