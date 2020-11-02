@@ -12,10 +12,9 @@ const inputs = [
   "wxPusherUrl",
 ];
 
-const options = inputs.reduce((res, k) => (res[k] = core.getInput(k)), {});
-console.log(options);
-
 async function run() {
+  const options = inputs.reduce((res, k) => (res[k] = core.getInput(k)), {});
+  console.debug("options:", options);
   if (!options.appToken) {
     core.setFailed("缺少 appToken");
     return;
