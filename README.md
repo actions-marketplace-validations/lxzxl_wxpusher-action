@@ -48,10 +48,10 @@ The time we greeted you.
 uses: lxzxl/wxpusher-action@v1.0
 with:
   appToken: ${{ secrets.WP_APP_TOKEN }}
+  summary: "${{ github.repository }} [${{ github.ref }}] 发布"
   content: "message content"
-  summary: "title"
-  contentType: ""
-  topicIds: "666,777"
-  uids: ""
-  url: ""
+  contentType: "" # 可选
+  topicIds: "666,777" # topicIds uids 二选一
+  uids: "" # topicIds uids 二选一
+  url: "" # 可选
 ```
