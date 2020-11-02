@@ -17,7 +17,6 @@ async function run() {
     res[k] = core.getInput(k);
     return res;
   }, {});
-  console.debug("options:", JSON.stringify(options));
   if (!options.appToken) {
     core.setFailed("缺少 appToken");
     return;
