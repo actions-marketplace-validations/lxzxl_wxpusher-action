@@ -10,10 +10,11 @@ jobs:
         with:
           node-version: "12"
       - name: WxPusher Action
+        uses: ./
         id: wxpusher
-        uses: actions/hello-world-javascript-action@v1.1
         with:
-          appToken: "Mona the Octocat"
+          appToken: ${{ secrets.WP_APP_TOKEN }}
+          content: "成功"
       # Use the output from the `hello` step
       - name: Get the output response
         run: echo "Response - ${{ steps.wxpusher.outputs.response }}"

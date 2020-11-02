@@ -47,7 +47,7 @@ The time we greeted you.
 ```yml
 uses: lxzxl/wxpusher-action@v1.0
 with:
-  appToken: "AT_xxxxxxxx"
+  appToken: ${{ secrets.WP_APP_TOKEN }}
   content: "message content"
   summary: "title"
   contentType: ""
