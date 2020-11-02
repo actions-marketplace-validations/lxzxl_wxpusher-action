@@ -32,7 +32,7 @@ async function run() {
     const httpClient = new HttpClient("Github Action");
     const res = await httpClient.postJson(wxPusherUrl, {
       appToken,
-      summary: encodeURIComponent(summary),
+      summary,
       content,
       topicIds,
       uids,
@@ -40,7 +40,6 @@ async function run() {
       url,
     });
     core.setOutput("response", res.result);
-    //=> 'https://cats.com/unicorn'
   } catch (error) {
     core.setFailed(error.message);
   }
