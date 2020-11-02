@@ -3,7 +3,7 @@ on: [push]
 jobs:
   test_notification:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Test WxPusher action
     steps:
       - uses: actions/checkout@v2
       - name: WxPusher Action
